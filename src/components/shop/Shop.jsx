@@ -1,7 +1,14 @@
 import { useOutletContext } from 'react-router-dom';
+import { useState } from 'react';
 
 function Shop() {
-  const { data } = useOutletContext();
+  let { data } = useOutletContext();
+
+  const [search, setSearch] = useState('');
+  const regex = new RegExp(search, 'i');
+  data = data.filter((item) => regex.test(item.description));
+
+  const updateSearch = (e) => setSearch(e.target.value);
 
   return (
     <main>
@@ -9,6 +16,15 @@ function Shop() {
         <h2>Fake Store's Shop</h2>
       </header>
       <div>{data.length} Items</div>
+      <div>
+        <label htmlFor="searchbar">Search Item</label>
+        <input
+          type="text"
+          id="searchbar"
+          value={search}
+          onChange={updateSearch}
+        ></input>
+      </div>
       <section>
         {data.map((item) => {
           return (
