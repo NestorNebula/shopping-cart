@@ -1,8 +1,8 @@
 import { vi, describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Shop from '../components/shop/Shop';
-import { FakeData } from '../placeholders/FakeData';
+import Shop from '../src/components/shop/Shop';
+import { FakeData } from '../src/placeholders/FakeData';
 
 const data = FakeData().data;
 
