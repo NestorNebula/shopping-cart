@@ -25,4 +25,13 @@ describe('Shop', () => {
     const items = screen.queryAllByTestId('item');
     expect(items.length).toEqual(data.length);
   });
+
+  it('display items based on search', async () => {
+    const user = userEvent.setup();
+    render(<Shop />);
+    const searchbar = screen.getByLabelText('Search Item');
+    await user.type(searchbar, 'house');
+    const items = screen.queryAllByTestId('item');
+    expect(items.length).toEqual(1);
+  });
 });
