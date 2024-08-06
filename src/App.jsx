@@ -58,10 +58,11 @@ function App() {
 
   const cart = Cart();
   return (
-    !loading && (
+    !loading &&
+    !error && (
       <>
         <Navbar />
-        <Outlet />
+        <Outlet context={{ data, cart }} />
         <Footer />
       </>
     )
