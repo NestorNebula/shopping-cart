@@ -28,7 +28,7 @@ function Shop() {
       <section>
         {data.map((item) => {
           return (
-            <Link to={`/shop/item/${item.id}`}>
+            <Link to={`/shop/item/${item.id}`} key={item.id}>
               <div data-testid="item" className="item" key={item.id}>
                 <img src={item.images[0]} alt="" />
                 <div>{item.title}</div>
