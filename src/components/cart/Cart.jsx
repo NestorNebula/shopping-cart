@@ -1,10 +1,18 @@
-import { useOutletContext, Link } from 'react-router-dom';
+import { useOutletContext, Navigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function Cart() {
-  const { data, cart } = useOutletContext();
+  const { cart } = useOutletContext();
+  const [submit, setSubmit] = useState(false);
+
+  const handleFakeOrder = () => {
+    cart.clearCart();
+    setSubmit(true);
+  };
 
   return (
     <section>
+      {submit && <Navigate to="/" />}
       <div>Your Cart</div>
       <div>
         <div>Item</div>
@@ -24,6 +32,7 @@ function Cart() {
         <div>Total:</div>
         <div>{cart.getTotal()}$</div>
       </div>
+      <button onClick={handleFakeOrder}>Confirm order</button>
     </section>
   );
 }
