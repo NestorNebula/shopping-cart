@@ -28,4 +28,12 @@ describe('Item', () => {
     const title = screen.queryByText('Family Tree Photo Frame');
     expect(title).not.toBeNull();
   });
+
+  it('add item to the cart', async () => {
+    const user = userEvent.setup();
+    render(<Item />);
+    const addButton = screen.getByRole('button', { name: 'Add Item' });
+    await user.click(addButton);
+    expect(cart.getTotal()).toBe(29.99);
+  });
 });
