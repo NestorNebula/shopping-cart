@@ -21,15 +21,25 @@ function Item() {
       <div>{item.title}</div>
       <div>{item.price}$</div>
       <div>{item.description}</div>
-      <button onClick={addToCart}>Add to Cart</button>
-      <label htmlFor="quantity">Quantity:</label>
-      <input
-        id="quantity"
-        type="number"
-        placeholder="1"
-        value={quantity}
-        onChange={updateQuantity}
-      />
+      {console.log(cart.items)};
+      {cart.items.some((cartItem) => cartItem.item.id === item.id) ? (
+        <>
+          <div>This item is already on your cart!</div>
+          <Link to="/cart">Check your cart</Link>
+        </>
+      ) : (
+        <>
+          <button onClick={addToCart}>Add to Cart</button>
+          <label htmlFor="quantity">Quantity:</label>
+          <input
+            id="quantity"
+            type="number"
+            placeholder="1"
+            value={quantity}
+            onChange={updateQuantity}
+          />
+        </>
+      )}
     </div>
   );
 }
