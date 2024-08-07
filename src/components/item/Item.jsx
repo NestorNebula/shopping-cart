@@ -4,7 +4,7 @@ import { useState } from 'react';
 function Item() {
   const { data, cart } = useOutletContext();
   const { item: id } = useParams();
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState('');
   const regex = new RegExp('([0-9]+)', 'i');
 
   const updateQuantity = (e) => {
@@ -12,7 +12,7 @@ function Item() {
   };
   const item = data.find((itm) => itm.id === +id);
   const addToCart = () => {
-    cart.addItem(item, quantity);
+    cart.addItem(item, quantity || '1');
   };
 
   return (
@@ -26,6 +26,7 @@ function Item() {
       <input
         id="quantity"
         type="number"
+        placeholder="1"
         value={quantity}
         onChange={updateQuantity}
       />

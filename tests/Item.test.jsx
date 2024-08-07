@@ -50,6 +50,6 @@ describe('Item', () => {
     await user.type(input, '2');
     const addButton = screen.getByRole('button', { name: 'Add to Cart' });
     await user.click(addButton);
-    expect(mockAddItem).toHaveBeenLastCalledWith(data[1], '12');
+    expect(mockAddItem).toHaveBeenLastCalledWith(data[1], '2');
   });
 });
