@@ -1,8 +1,7 @@
 import { vi, describe, it, expect } from 'vitest';
-import { queryByText, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FakeData } from '../src/placeholders/FakeData';
-import { MemoryRouter, useParams } from 'react-router-dom';
 import Item from '../src/components/item/Item';
 import { Cart } from '../src/Cart';
 
@@ -23,6 +22,13 @@ vi.mock('react-router-dom', async () => {
 });
 
 describe('Item', () => {
+  const mockAddItem = vi.fn((item, quantity) => {
+    return {
+      item: item,
+      quantity: quantity,
+    };
+  });
+  cart.addItem = mockAddItem;
   it('renders a given object correctly', () => {
     render(<Item />);
     const title = screen.queryByText('Family Tree Photo Frame');
@@ -34,6 +40,16 @@ describe('Item', () => {
     render(<Item />);
     const addButton = screen.getByRole('button', { name: 'Add to Cart' });
     await user.click(addButton);
-    expect(cart.getTotal()).toBe(29.99);
+    expect(mockAddItem).toHaveBeenCalled();
+  });
+
+  it('add item with correct quantity', async () => {
+    const user = userEvent.setup();
+    render(<Item />);
+    const input = screen.getByLabelText('Quantity:');
+    await user.type(input, '2');
+    const addButton = screen.getByRole('button', { name: 'Add to Cart' });
+    await user.click(addButton);
+    expect(mockAddItem).toHaveBeenLastCalledWith(data[1], '12');
   });
 });
