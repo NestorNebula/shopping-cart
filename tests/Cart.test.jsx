@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FakeData } from '../src/placeholders/FakeData';
 import { Cart as Cartfunctions } from '../src/Cart';
+import { MemoryRouter } from 'react-router-dom';
 import Cart from '../src/components/cart/Cart';
 
 const mockSetItems = vi.fn((update) => update);
@@ -23,7 +24,11 @@ vi.mock('react-router-dom', async () => {
 
 describe('cart', () => {
   it('renders cart properly', () => {
-    render(<Cart />);
+    render(
+      <MemoryRouter>
+        <Cart />
+      </MemoryRouter>
+    );
     expect(screen.queryByText('Decoration Swing')).not.toBeNull();
     expect(screen.queryByText('59.99$')).not.toBeNull();
   });
@@ -31,7 +36,11 @@ describe('cart', () => {
   it('fake command when clicking button', async () => {
     cart.clearCart = vi.fn();
     const user = userEvent.setup();
-    render(<Cart />);
+    render(
+      <MemoryRouter>
+        <Cart />
+      </MemoryRouter>
+    );
     const button = screen.getByRole('button', { name: 'Confirm order' });
     await user.click(button);
     expect(cart.clearCart).toHaveBeenCalledOnce();
