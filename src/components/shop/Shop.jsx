@@ -1,4 +1,4 @@
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, Link } from 'react-router-dom';
 import { useState } from 'react';
 
 function Shop() {
@@ -28,11 +28,13 @@ function Shop() {
       <section>
         {data.map((item) => {
           return (
-            <div data-testid="item" className="item" key={item.id}>
-              <img src={item.images[0]} alt="" />
-              <div>{item.title}</div>
-              <div>{item.price}$</div>
-            </div>
+            <Link to={`/shop/item/${item.id}`}>
+              <div data-testid="item" className="item" key={item.id}>
+                <img src={item.images[0]} alt="" />
+                <div>{item.title}</div>
+                <div>{item.price}$</div>
+              </div>
+            </Link>
           );
         })}
       </section>
