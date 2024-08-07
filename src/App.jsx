@@ -3,8 +3,8 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import { Outlet } from 'react-router-dom';
 import { FakeData } from './placeholders/FakeData';
+import { useState, useEffect } from 'react';
 import { Cart } from './Cart';
-// import { useState, useEffect } from 'react';
 
 /* const useData = () => {
   const [data, setData] = useState(null);
@@ -39,8 +39,8 @@ import { Cart } from './Cart';
 
 function App() {
   const { data, error, loading } = FakeData();
-
-  const cart = Cart();
+  const [items, setItems] = useState([]);
+  const cart = Cart(items, setItems);
   return (
     !loading &&
     !error && (
