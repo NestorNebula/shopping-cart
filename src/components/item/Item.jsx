@@ -11,6 +11,9 @@ function Item() {
     if (regex.test(e.target.value)) setQuantity(e.target.value);
   };
   const item = data.find((itm) => itm.id === +id);
+  const addToCart = () => {
+    cart.addItem(item, quantity);
+  };
 
   return (
     <div>
@@ -18,8 +21,8 @@ function Item() {
       <div>{item.title}</div>
       <div>{item.price}$</div>
       <div>{item.description}</div>
-      <button>Add to Cart</button>
-      <label htmlFor="quantity"></label>
+      <button onClick={addToCart}>Add to Cart</button>
+      <label htmlFor="quantity">Quantity:</label>
       <input
         id="quantity"
         type="number"
