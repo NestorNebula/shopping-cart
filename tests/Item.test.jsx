@@ -4,9 +4,10 @@ import userEvent from '@testing-library/user-event';
 import { FakeData } from '../src/placeholders/FakeData';
 import Item from '../src/components/item/Item';
 import { Cart } from '../src/Cart';
+import { MemoryRouter } from 'react-router-dom';
 
 const data = FakeData().data;
-const cart = Cart();
+const cart = Cart([{ item: FakeData().data[3], quantity: 1 }]);
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
@@ -30,14 +31,22 @@ describe('Item', () => {
   });
   cart.addItem = mockAddItem;
   it('renders a given object correctly', () => {
-    render(<Item />);
+    render(
+      <MemoryRouter>
+        <Item />
+      </MemoryRouter>
+    );
     const title = screen.queryByText('Family Tree Photo Frame');
     expect(title).not.toBeNull();
   });
 
   it('add item to the cart', async () => {
     const user = userEvent.setup();
-    render(<Item />);
+    render(
+      <MemoryRouter>
+        <Item />
+      </MemoryRouter>
+    );
     const addButton = screen.getByRole('button', { name: 'Add to Cart' });
     await user.click(addButton);
     expect(mockAddItem).toHaveBeenCalled();
@@ -45,7 +54,11 @@ describe('Item', () => {
 
   it('add item with correct quantity', async () => {
     const user = userEvent.setup();
-    render(<Item />);
+    render(
+      <MemoryRouter>
+        <Item />
+      </MemoryRouter>
+    );
     const input = screen.getByLabelText('Quantity:');
     await user.type(input, '2');
     const addButton = screen.getByRole('button', { name: 'Add to Cart' });
