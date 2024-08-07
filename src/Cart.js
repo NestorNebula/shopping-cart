@@ -2,7 +2,7 @@ export function Cart() {
   let items = [];
 
   const getTotal = () =>
-    items.reduce((sum, item) => (sum += item.price * item.quantity));
+    items.reduce((sum, item) => (sum += item.price * item.quantity), 0);
 
   const addItem = (item, quantity) => {
     items.forEach((cartItem) => {
