@@ -18,7 +18,7 @@ function Item() {
       <div>{item.title}</div>
       <div>{item.price}$</div>
       <div>{item.description}</div>
-      <button>Add Item</button>
+      <button>Add to Cart</button>
       <label htmlFor="quantity"></label>
       <input
         id="quantity"

@@ -32,7 +32,7 @@ describe('Item', () => {
   it('add item to the cart', async () => {
     const user = userEvent.setup();
     render(<Item />);
-    const addButton = screen.getByRole('button', { name: 'Add Item' });
+    const addButton = screen.getByRole('button', { name: 'Add to Cart' });
     await user.click(addButton);
     expect(cart.getTotal()).toBe(29.99);
   });
