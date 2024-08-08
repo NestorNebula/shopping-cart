@@ -45,7 +45,7 @@ describe('Shop', () => {
         <Shop />
       </MemoryRouter>
     );
-    const searchbar = screen.getByLabelText('Search Item');
+    const searchbar = screen.getByLabelText(/Search Item/);
     await user.type(searchbar, 'house');
     const items = screen.queryAllByTestId('item');
     expect(items.length).toEqual(1);
