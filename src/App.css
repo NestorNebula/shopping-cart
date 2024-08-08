@@ -19,6 +19,15 @@ a:hover {
   text-decoration: underline;
 }
 
+button:hover {
+  cursor: pointer;
+  filter: contrast(120%);
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
 #root {
   display: flex;
   flex-direction: column;
