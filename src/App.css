@@ -10,6 +10,15 @@ li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 #root {
   display: flex;
   flex-direction: column;
