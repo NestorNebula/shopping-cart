@@ -1,4 +1,6 @@
 import { Link, useOutletContext } from 'react-router-dom';
+import cart from '../../assets/icons/cart.png';
+import shop from '../../assets/icons/shop.png';
 import styles from './Homepage.module.css';
 
 function Homepage() {
@@ -11,7 +13,9 @@ function Homepage() {
   return (
     <main className={styles.homepage}>
       <header className={styles.title}>
-        <div>Welcome to Fake Store!</div>
+        <div>
+          Welcome to <span className={styles.fakeStore}>Fake Store </span>!
+        </div>
       </header>
       <section className={styles.section}>
         <div className={styles.sectionTitle}>Start shopping now!</div>
@@ -34,8 +38,18 @@ function Homepage() {
           </div>
         </div>
         <div className={styles.links}>
-          <Link to="shop">Shop</Link>
-          <Link to="cart">Cart</Link>
+          <Link to="shop">
+            <div className={styles.linkContainer}>
+              <div>Shop</div>
+              <img className={styles.linkImg} src={shop} alt="/"></img>
+            </div>
+          </Link>
+          <Link to="cart">
+            <div className={styles.linkContainer}>
+              <div>Cart</div>
+              <img className={styles.linkImg} src={cart} alt="/" />
+            </div>
+          </Link>
         </div>
       </section>
     </main>
