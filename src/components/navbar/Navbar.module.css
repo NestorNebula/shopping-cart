@@ -1,0 +1,24 @@
+nav {
+  background-color: #fca5a5;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  font-size: 3rem;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 3.5rem;
+}
+
+.cart {
+  position: relative;
+}
+
+.cartLength {
+  position: absolute;
+}
