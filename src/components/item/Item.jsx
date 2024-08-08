@@ -21,7 +21,6 @@ function Item() {
       <div>{item.title}</div>
       <div>{item.price}$</div>
       <div>{item.description}</div>
-      {console.log(cart.items)};
       {cart.items.some((cartItem) => cartItem.item.id === item.id) ? (
         <>
           <div>This item is already on your cart!</div>
