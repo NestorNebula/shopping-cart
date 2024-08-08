@@ -45,7 +45,7 @@ function App() {
     !loading &&
     !error && (
       <>
-        <Navbar />
+        <Navbar cart={cart} />
         <Outlet context={{ data, cart }} />
         <Footer />
       </>

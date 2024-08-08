@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+function Navbar({ cart }) {
   return (
     <nav>
       <ul>
@@ -11,7 +11,10 @@ function Navbar() {
           <Link to="/">Fake Store</Link>
         </li>
         <li>
-          <Link to="cart">Cart</Link>
+          <div>
+            <div>{cart.items.length}</div>
+            <Link to="cart">Cart</Link>
+          </div>
         </li>
       </ul>
     </nav>
