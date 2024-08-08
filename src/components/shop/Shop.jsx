@@ -38,6 +38,10 @@ function Shop() {
           );
         })}
       </section>
+      <div>
+        <Link to="/">Homepage</Link>
+        <Link to="/cart">Cart</Link>
+      </div>
     </main>
   );
 }

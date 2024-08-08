@@ -17,13 +17,15 @@ function Item() {
 
   return (
     <div>
-      <img src={item.images[0]} alt="" />
-      <div>{item.title}</div>
-      <div>{item.price}$</div>
-      <div>{item.description}</div>
+      <div>
+        <img src={item.images[0]} alt="" />
+        <div>{item.title}</div>
+        <div>{item.price}$</div>
+        <div>{item.description}</div>
+      </div>
       {cart.items.some((cartItem) => cartItem.item.id === item.id) ? (
         <>
-          <div>This item is already on your cart!</div>
+          <div>This item has been added to your cart!</div>
           <Link to="/cart">Check your cart</Link>
         </>
       ) : (
@@ -39,6 +41,10 @@ function Item() {
           />
         </>
       )}
+      <div>
+        <Link to="/">Homepage</Link>
+        <Link to="/shop">Shop</Link>
+      </div>
     </div>
   );
 }
