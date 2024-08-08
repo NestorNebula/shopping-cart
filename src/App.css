@@ -1,0 +1,16 @@
+:root {
+  font-size: 62.5%;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
