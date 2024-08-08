@@ -1,0 +1,51 @@
+.shop {
+  padding: 5rem;
+  background-color: #fafafa;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 10rem;
+  text-align: center;
+}
+
+.numItems {
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.searchbar {
+  font-size: 1.75rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.searchbarInput {
+  background-color: inherit;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+  padding: 2.5rem 0;
+}
+
+.item {
+  background-color: aliceblue;
+  padding: 2.5rem;
+  display: grid;
+  justify-items: center;
+}
+
+.itemName {
+  font-size: 2.25rem;
+}
+
+.itemPrice {
+  font-size: 2rem;
+}
