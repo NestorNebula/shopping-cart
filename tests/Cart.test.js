@@ -45,7 +45,7 @@ describe('clearCart', () => {
 describe('removeItem', () => {
   let cart = Cart([], mockSetItems);
   it('remove an item from cart', () => {
-    cart.addItem(data[0]);
+    cart.addItem(data[0], 1);
     cart.removeItem(data[0].id);
     expect(cart.items.length).toBe(0);
   });
