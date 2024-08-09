@@ -16,6 +16,18 @@
   font-size: 5rem;
 }
 
+.params {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.params div:nth-child(2) {
+  justify-self: end;
+  grid-area: 1 / 2 / 3 / 3;
+  font-size: 1.75rem;
+}
+
 .numItems {
   font-size: 2rem;
   font-style: italic;

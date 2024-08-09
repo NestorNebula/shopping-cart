@@ -33,28 +33,30 @@ function Shop() {
           <span className={styles.fakeStore}>Fake Store </span>'s Shop
         </h2>
       </header>
-      <div className={styles.numItems}>
-        {data.length > 1 ? `${data.length} Items` : `${data.length} Item`}{' '}
-        {search && `found for "${search}"`}
-      </div>
-      <div className={styles.searchbar}>
-        <label htmlFor="searchbar">Search Item:</label>
-        <input
-          className={styles.searchbarInput}
-          type="text"
-          id="searchbar"
-          value={search}
-          onChange={updateSearch}
-        ></input>
-      </div>
-      <div>
-        <label htmlFor="select">Sort by: </label>
-        <select id="select" onChange={updateSort}>
-          <option value="category">Category</option>
-          <option value="popularity">Popularity</option>
-          <option value="low-to-high">Price: Low to High</option>
-          <option value="high-to-low">Price: High to Low</option>
-        </select>
+      <div className={styles.params}>
+        <div className={styles.numItems}>
+          {data.length > 1 ? `${data.length} Items` : `${data.length} Item`}{' '}
+          {search && `found for "${search}"`}
+        </div>
+        <div>
+          <label htmlFor="select">Sort by: </label>
+          <select id="select" onChange={updateSort}>
+            <option value="category">Category</option>
+            <option value="popularity">Popularity</option>
+            <option value="low-to-high">Price: Low to High</option>
+            <option value="high-to-low">Price: High to Low</option>
+          </select>
+        </div>
+        <div className={styles.searchbar}>
+          <label htmlFor="searchbar">Search Item:</label>
+          <input
+            className={styles.searchbarInput}
+            type="text"
+            id="searchbar"
+            value={search}
+            onChange={updateSearch}
+          ></input>
+        </div>
       </div>
       {sortData(data)}
       <section className={styles.section}>
