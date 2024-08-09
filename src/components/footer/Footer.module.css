@@ -1,0 +1,21 @@
+footer {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+.credits {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.credits > * {
+  padding-right: 1rem;
+  border-right: 1px solid aliceblue;
+}
+
+.credits a:last-child {
+  padding: 0;
+  border: none;
+}
