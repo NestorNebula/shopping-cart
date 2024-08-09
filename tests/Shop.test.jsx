@@ -1,5 +1,5 @@
 import { vi, describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Shop from '../src/components/shop/Shop';
 import { FakeData } from '../src/placeholders/FakeData';
@@ -49,5 +49,21 @@ describe('Shop', () => {
     await user.type(searchbar, 'house');
     const items = screen.queryAllByTestId('item');
     expect(items.length).toEqual(1);
+  });
+
+  it('calls updateSort when selecting an option', async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter>
+        <Shop />
+      </MemoryRouter>
+    );
+    await user.selectOptions(screen.getByRole('combobox'), 'Popularity');
+
+    expect(screen.getByRole('option', { name: 'Popularity' }).selected).toBe(
+      true
+    );
+    const firstItem = screen.queryAllByTestId('item')[0];
+    expect(within(firstItem).getByText(/Table Lamp/)).not.toBeNull();
   });
 });
