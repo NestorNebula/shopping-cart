@@ -80,7 +80,7 @@ function Item() {
                       <img
                         key={star + index + review.reviewerName}
                         src={star}
-                        alt="/"
+                        alt=""
                       ></img>
                     ))}
                   </div>

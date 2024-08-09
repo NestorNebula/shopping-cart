@@ -40,13 +40,13 @@ function Homepage() {
         <div className={styles.links}>
           <Link to="shop">
             <div className={styles.linkContainer}>
-              <img className={styles.linkImg} src={shop} alt="/"></img>
+              <img className={styles.linkImg} src={shop} alt=""></img>
               <div>Shop</div>
             </div>
           </Link>
           <Link to="cart">
             <div className={styles.linkContainer}>
-              <img className={styles.linkImg} src={cart} alt="/" />
+              <img className={styles.linkImg} src={cart} alt="" />
               <div>Cart</div>
             </div>
           </Link>

@@ -75,13 +75,13 @@ function Shop() {
       <div className={styles.links}>
         <Link to="/">
           <div className={styles.linkContainer}>
-            <img className={styles.linkImg} src={homepage} alt="/"></img>
+            <img className={styles.linkImg} src={homepage} alt=""></img>
             <div>Homepage</div>
           </div>
         </Link>
         <Link to="/cart">
           <div className={styles.linkContainer}>
-            <img className={styles.linkImg} src={cart} alt="/" />
+            <img className={styles.linkImg} src={cart} alt="" />
             <div>Cart</div>
           </div>
         </Link>
