@@ -15,6 +15,7 @@ function Cart() {
 
   return cart.items.length < 1 ? (
     <main className={styles.main}>
+      {submit && <Navigate to="/" />}
       <section className={styles.noCart}>
         <div>You don't have any item in your cart for now!</div>
         <Link className={styles.returnButton} to="/shop">
@@ -25,7 +26,6 @@ function Cart() {
   ) : (
     <main className={styles.main}>
       <section className={styles.cart}>
-        {submit && <Navigate to="/" />}
         <div className={styles.title}>Your Cart</div>
         <div className={styles.rows}>
           <div className={styles.cartHeaders}>
