@@ -70,7 +70,6 @@
 }
 
 .linkContainer {
-  position: relative;
   display: grid;
   gap: 2rem;
   padding: 2rem;
@@ -84,10 +83,6 @@
 .linkContainer:hover,
 .linkContainer:focus {
   transform: scale(1.01);
-}
-
-.linkContainer:active {
-  top: 2px;
 }
 
 .linkImg {
