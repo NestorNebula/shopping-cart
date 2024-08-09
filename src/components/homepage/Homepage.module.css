@@ -55,6 +55,8 @@
   padding: 2.5rem;
   box-shadow: 1px 1px 5px lightgray;
   background-color: white;
+  width: 26rem;
+  height: 26rem;
 }
 
 .img {
