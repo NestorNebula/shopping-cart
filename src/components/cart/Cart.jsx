@@ -11,6 +11,8 @@ function Cart() {
     setSubmit(true);
   };
 
+  const handleRemove = (itemId) => cart.removeItem(itemId);
+
   return cart.items.length < 1 ? (
     <main className={styles.main}>
       <section className={styles.noCart}>
@@ -24,12 +26,13 @@ function Cart() {
     <main className={styles.main}>
       <section className={styles.cart}>
         {submit && <Navigate to="/" />}
-        <div>Your Cart</div>
+        <div className={styles.title}>Your Cart</div>
         <div className={styles.rows}>
           <div className={styles.cartHeaders}>
             <div>Item</div>
             <div>Price</div>
             <div>Quantity</div>
+            <div></div>
           </div>
           {cart.items.map((item) => {
             return (
@@ -38,6 +41,12 @@ function Cart() {
                 <div>{item.item.title}</div>
                 <div>{item.item.price}</div>
                 <div>{item.quantity}</div>
+                <button
+                  className={styles.removeButton}
+                  onClick={() => handleRemove(item.item.id)}
+                >
+                  Remove
+                </button>
               </div>
             );
           })}
