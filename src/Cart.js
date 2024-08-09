@@ -9,7 +9,11 @@ export function Cart(itm, setItems) {
       setItems([...items, { item: item, quantity: quantity }]);
   };
 
+  const removeItem = (itemId) => {
+    items.filter((item) => item.item.id !== itemId);
+  };
+
   const clearCart = () => setItems([]);
 
-  return { items, getTotal, addItem, clearCart };
+  return { items, getTotal, addItem, removeItem, clearCart };
 }
