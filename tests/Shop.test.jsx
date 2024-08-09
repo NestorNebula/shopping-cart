@@ -2,7 +2,7 @@ import { vi, describe, it, expect } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Shop from '../src/components/shop/Shop';
-import { FakeData } from '../src/placeholders/FakeData';
+import { FakeData } from './FakeData';
 import { MemoryRouter } from 'react-router-dom';
 
 const data = FakeData().data;

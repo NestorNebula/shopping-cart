@@ -1,7 +1,7 @@
 import { vi, describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FakeData } from '../src/placeholders/FakeData';
+import { FakeData } from './FakeData';
 import Item from '../src/components/item/Item';
 import { Cart } from '../src/Cart';
 import { MemoryRouter } from 'react-router-dom';

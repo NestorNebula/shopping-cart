@@ -1,5 +1,5 @@
 import { vi, describe, it, expect } from 'vitest';
-import { FakeData } from '../src/placeholders/FakeData';
+import { FakeData } from './FakeData';
 import { Cart } from '../src/Cart';
 
 const data = FakeData().data;
