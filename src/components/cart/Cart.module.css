@@ -3,6 +3,13 @@
   place-content: center;
 }
 
+.title {
+  justify-self: start;
+  margin-bottom: 5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .noCart {
   background-color: #e2e8f0;
   font-size: 2.5rem;
@@ -46,12 +53,13 @@
 .cartHeaders,
 .item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   place-items: center;
 }
 
 .confirmOrder,
+.removeButton,
 .returnButton {
   padding: 1rem;
   background-color: #1e3a8a;
