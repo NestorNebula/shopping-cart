@@ -1,5 +1,7 @@
 import { useOutletContext, Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import star from '../../assets/icons/star.png';
+import noStar from '../../assets/icons/nostar.png';
 import styles from './Item.module.css';
 
 function Item() {
@@ -15,6 +17,19 @@ function Item() {
   const reviews = item.reviews;
   const addToCart = () => {
     cart.addItem(item, quantity || '1');
+  };
+
+  const displayStars = (starsNumber) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (starsNumber > 0) {
+        stars.push(star);
+      } else {
+        stars.push(noStar);
+      }
+      starsNumber -= 1;
+    }
+    return stars;
   };
 
   return (
@@ -57,7 +72,18 @@ function Item() {
                   key={review.reviewerName + review.comment}
                 >
                   <div>{review.reviewerName}</div>
-                  <div>{review.rating} / 5</div>
+                  <div
+                    className={styles.stars}
+                    aria-label={review.rating + ' out of 5'}
+                  >
+                    {displayStars(review.rating).map((star, index) => (
+                      <img
+                        key={star + index + review.reviewerName}
+                        src={star}
+                        alt="/"
+                      ></img>
+                    ))}
+                  </div>
                   <div>"{review.comment}"</div>
                 </div>
               );

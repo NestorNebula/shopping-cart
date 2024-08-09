@@ -68,11 +68,26 @@
 .review {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
+  align-items: end;
+  padding: 1rem 0.5rem 3rem;
+  border-bottom: 1px solid grey;
+}
+
+.review:last-child {
+  border-bottom: none;
 }
 
 .review div:first-child {
   text-transform: uppercase;
+}
+
+.stars {
+  display: flex;
+}
+
+.stars > * {
+  max-width: 3rem;
 }
 
 .review div:last-child {
