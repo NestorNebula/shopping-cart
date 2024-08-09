@@ -16,9 +16,14 @@ function Navbar({ cart }) {
         </li>
         <li>
           <div className={styles.cart}>
-            <div className={styles.cartLength}>{cart.items.length}</div>
+            <div
+              className={styles.cartLength}
+              aria-label={cart.items.length + ' items in cart'}
+            >
+              {cart.items.length}
+            </div>
             <Link to="cart">
-              <img className={styles.cartIcon} src={cartIcon} alt="/" />
+              <img className={styles.cartIcon} src={cartIcon} alt="cart" />
             </Link>
           </div>
         </li>
