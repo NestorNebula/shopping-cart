@@ -1,0 +1,21 @@
+.errorPage {
+  background-color: #e2e8f0;
+  font-size: 2.5rem;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+.returnLink {
+  color: #1e3a8a;
+  animation: returnAnimation 1.5s infinite alternate;
+}
+
+@keyframes returnAnimation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.03);
+  }
+}
