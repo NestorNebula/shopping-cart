@@ -8,10 +8,23 @@ function Shop() {
   let { data } = useOutletContext();
 
   const [search, setSearch] = useState('');
+  const [sort, setSort] = useState('category');
   const regex = new RegExp(search, 'i');
   data = data.filter((item) => regex.test(item.description));
 
   const updateSearch = (e) => setSearch(e.target.value);
+  const updateSort = (e) => setSort(e.target.value);
+  const sortData = (datas) => {
+    if (sort === 'popularity') {
+      datas.sort((a, b) => b.rating - a.rating);
+    } else if (sort === 'low-to-high') {
+      datas.sort((a, b) => a.price - b.price);
+    } else if (sort === 'high-to-low') {
+      datas.sort((a, b) => b.price - a.price);
+    } else {
+      datas.sort();
+    }
+  };
 
   return (
     <main className={styles.shop}>
@@ -34,6 +47,16 @@ function Shop() {
           onChange={updateSearch}
         ></input>
       </div>
+      <div>
+        <label htmlFor="select">Sort by: </label>
+        <select id="select" onChange={updateSort}>
+          <option value="category">Category</option>
+          <option value="popularity">Popularity</option>
+          <option value="low-to-high">Price: Low to High</option>
+          <option value="high-to-low">Price: High to Low</option>
+        </select>
+      </div>
+      {sortData(data)}
       <section className={styles.section}>
         {data.map((item) => {
           return (
