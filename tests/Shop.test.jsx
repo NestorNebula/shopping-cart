@@ -25,7 +25,7 @@ describe('Shop', () => {
       </MemoryRouter>
     );
     const header = screen.getByRole('heading');
-    expect(header.textContent).toMatch("Fake Store's Shop");
+    expect(header.textContent).toMatch(/Fake Store 's Shop/);
   });
 
   it('display all items', () => {
