@@ -41,3 +41,12 @@ describe('clearCart', () => {
     expect(cart.getTotal()).toBe(0);
   });
 });
+
+describe('removeItem', () => {
+  let cart = Cart([], mockSetItems);
+  it('remove an item from cart', () => {
+    cart.addItem(data[0]);
+    cart.removeItem(data[0].id);
+    expect(cart.items.length).toBe(0);
+  });
+});
