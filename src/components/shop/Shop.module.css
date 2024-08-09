@@ -1,12 +1,19 @@
 .shop {
   padding: 5rem;
   background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   font-size: 3rem;
   margin-bottom: 10rem;
   text-align: center;
+}
+
+.fakeStore {
+  font-family: 'Bebas Neue';
+  font-size: 5rem;
 }
 
 .numItems {
@@ -23,7 +30,7 @@
 
 .searchbarInput {
   background-color: inherit;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 5px;
   padding: 0.5rem;
 }
@@ -37,6 +44,8 @@
 
 .item {
   background-color: aliceblue;
+  box-shadow: 0px 0px 3px gray;
+  border-radius: 5px;
   padding: 2.5rem;
   display: grid;
   justify-items: center;
@@ -48,4 +57,38 @@
 
 .itemPrice {
   font-size: 2rem;
+}
+
+.links {
+  margin-top: 3rem;
+  display: flex;
+  gap: 2.5rem;
+  font-size: 1.75rem;
+  align-self: center;
+}
+
+.linkContainer {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+  font-size: 2.25rem;
+  justify-items: center;
+  background-color: #7dd3fc;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #0c4a6e;
+  transition: transform 0.3s ease-in;
+}
+
+.linkContainer:hover,
+.linkContainer:focus {
+  transform: scale(1.01);
+}
+
+.linkContainer:active {
+  top: 2px;
+}
+
+.linkImg {
+  max-width: 15rem;
 }
