@@ -2,7 +2,7 @@
 
 ## Description
 
-[Shopping Cart screenshot](./src/assets/images/shopping-cart.png)
+![Shopping Cart screenshot](./src/assets/images/shopping-cart.png)
 
 This project is a mock Shopping site.
 
