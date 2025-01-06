@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-
-interface Item {
-  brand?: string,
-  category: string,
-}
+import { Item } from "../types/types";
 
 const useData = () => {
   const [data, setData] = useState<Item[] | null>(null);
