@@ -1,11 +1,12 @@
 import { Link, useOutletContext } from 'react-router-dom';
+import { Item } from '../../types/types';
 import cart from '../../assets/icons/cart.png';
 import shop from '../../assets/icons/shop.png';
 import styles from './Homepage.module.css';
 
 function Homepage() {
-  const { data } = useOutletContext();
-  const reversedData = [];
+  const { data }: { data: Item[] } = useOutletContext();
+  const reversedData: Item[] = [];
   for (let i = data.length - 1; i >= 0; i--) {
     reversedData.push(data[i]);
   }
