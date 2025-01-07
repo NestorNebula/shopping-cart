@@ -1,3 +1,11 @@
+interface Cart {
+  items: Item[],
+  getTotal: () => number,
+  addItem: (item: Item, quantity: number) => void,
+  removeItem: (itemId: number) => void,
+  clearCart: () => void,
+}
+
 interface Item {
   id: number,
   title: string,
@@ -15,7 +23,6 @@ interface Review {
   comment: string,
   date: Date,
   reviewerName: string,
-
 }
 
-export type { Item };
+export type { Cart, Item };
