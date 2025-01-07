@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import cartIcon from '../../assets/icons/cart.svg';
+import { Cart } from '../../types/types';
 
-function Navbar({ cart }) {
+function Navbar({cart}: { cart: Cart }) {
   return (
     <nav>
       <ul>
