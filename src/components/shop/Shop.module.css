@@ -68,9 +68,17 @@
   transition: background 0.5s ease-in, color 0.5s ease-in;
 }
 
+.item > img {
+  transition: transform 0.5s ease-in;
+}
+
 .item:hover {
   background-color: #1e3a8a;
   color: white;
+}
+
+.item:hover > img {
+  transform: scale(1.05) rotate(1deg);
 }
 
 .itemName {
