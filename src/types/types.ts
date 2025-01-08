@@ -15,7 +15,7 @@ interface Item {
   rating: number;
   brand?: string;
   reviews: Review[];
-  images: any[];
+  images: string[];
 }
 
 interface Review {
