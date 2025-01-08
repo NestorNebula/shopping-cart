@@ -3,27 +3,30 @@ import styles from './ErrorPage.module.css';
 
 function ErrorPage() {
   interface RouteError {
+    error: {
+      message: string;
+    };
     status: number;
-    message: string;
   }
 
-  const error = useRouteError();
+  const error: any = useRouteError();
   const isRouteError = (error: unknown): error is RouteError => {
-    return !!(error as RouteError).status && !!(error as RouteError).message;
+    return !!(error as RouteError).status && !!(error as RouteError).status;
   };
+  const err = isRouteError(error)
+    ? { status: error.status, message: error.error.message }
+    : { status: 400, message: error.message };
 
   return (
     <div className={styles.errorPage}>
-      {isRouteError(error) && (
-        <>
-          <h1>Error {error.status}</h1>
-          {error.status === 404 ? (
-            <div>Sorry, it seems you landed on a page that does'nt exist!</div>
-          ) : (
-            <div>{error.message}</div>
-          )}
-        </>
-      )}
+      <>
+        <h1>Error {err.status}</h1>
+        {err.status === 404 ? (
+          <div>Sorry, it seems you landed on a page that does'nt exist!</div>
+        ) : (
+          <div>{err.message}</div>
+        )}
+      </>
       <Link className={styles.returnLink} to="/">
         Return to Homepage
       </Link>
