@@ -5,9 +5,10 @@ import { FakeData } from './FakeData';
 import { Cart as Cartfunctions } from '../src/Cart';
 import { MemoryRouter } from 'react-router-dom';
 import Cart from '../src/components/cart/Cart';
+import type { Cart as CartType } from '../src/types/types';
 
 const mockSetItems = vi.fn((update) => update);
-const cart = Cartfunctions(
+const cart: CartType = Cartfunctions(
   [{ item: FakeData().data[0], quantity: 1 }],
   mockSetItems
 );
