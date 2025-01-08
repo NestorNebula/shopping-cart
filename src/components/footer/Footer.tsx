@@ -5,6 +5,12 @@ function Footer() {
     <footer>
       <div className={styles.credits}>
         <a
+          href="https://www.flaticon.com/free-icons/online-shop"
+          title="online shop icons"
+        >
+          Online shop icons created by Freepik - Flaticon
+        </a>
+        <a
           href="https://www.flaticon.com/free-icons/shopping-bag"
           title="shopping-bag icons"
         >
