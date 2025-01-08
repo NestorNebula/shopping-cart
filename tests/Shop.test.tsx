@@ -4,8 +4,9 @@ import userEvent from '@testing-library/user-event';
 import Shop from '../src/components/shop/Shop';
 import { FakeData } from './FakeData';
 import { MemoryRouter } from 'react-router-dom';
+import { Item } from '../src/types/types';
 
-const data = FakeData().data;
+const data: Item[] = FakeData().data;
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
@@ -59,10 +60,10 @@ describe('Shop', () => {
       </MemoryRouter>
     );
     await user.selectOptions(screen.getByRole('combobox'), 'Popularity');
-
-    expect(screen.getByRole('option', { name: 'Popularity' }).selected).toBe(
-      true
-    );
+    const optionElement: HTMLOptionElement = screen.getByRole('option', {
+      name: 'Popularity',
+    });
+    expect(optionElement.selected).toBe(true);
     const firstItem = screen.queryAllByTestId('item')[0];
     expect(within(firstItem).getByText(/Table Lamp/)).not.toBeNull();
   });
