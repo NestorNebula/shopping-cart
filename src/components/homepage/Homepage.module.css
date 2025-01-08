@@ -51,16 +51,21 @@
 }
 
 .imgContainer {
-  border: 5px solid #a5b4fc;
-  padding: 2.5rem;
+  --padding: 2.5rem;
+  --img-size: 15rem;
+  --border-size: 5px;
+  --size: calc(var(--img-size) + var(--padding) * 2 + var(--border-size) * 2);
+  border: var(--border-size) solid #a5b4fc;
+  border-radius: 5px;
+  padding: var(--padding);
   box-shadow: 1px 1px 5px lightgray;
   background-color: white;
-  width: 26rem;
-  height: 26rem;
+  width: var(--size);
+  height: var(--size);
 }
 
 .img {
-  max-width: 20rem;
+  max-width: var(--img-size);
 }
 
 .links {
@@ -106,5 +111,17 @@
   }
   to {
     left: 1rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .imgContainer {
+    --img-size: 20rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .imgContainer {
+    --img-size: 22.5rem;
   }
 }
