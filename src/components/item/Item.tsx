@@ -14,7 +14,8 @@ function Item() {
   const updateQuantity = (e: ChangeEvent) => {
     const target = e.target as HTMLInputElement;
     const value = target.value;
-    if (regex.test(value) && Number(value) >= 1) setQuantity(value);
+    if (regex.test(value) && Number(value) >= 1 && Number.isInteger(+value))
+      setQuantity(value);
   };
   const item = data.find((itm) => itm.id === +id!);
   if (!item) {
