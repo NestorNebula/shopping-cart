@@ -23,18 +23,26 @@ function Homepage() {
         <div className={styles.items}>
           <div className={styles.itemsContainer}>
             {data.map((item) => (
-              <div key={item.id + '1'} className={styles.imgContainer}>
+              <Link
+                key={item.id + '1'}
+                to={`shop/item/${item.id}`}
+                className={styles.imgContainer}
+              >
                 <img className={styles.img} src={item.images[0]} />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
         <div className={styles.items}>
           <div className={styles.itemsContainerBottom}>
             {reversedData.map((item) => (
-              <div key={item.id + '2'} className={styles.imgContainer}>
+              <Link
+                key={item.id + '2'}
+                to={`shop/item/${item.id}`}
+                className={styles.imgContainer}
+              >
                 <img className={styles.img} src={item.images[0]} />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
