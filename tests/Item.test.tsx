@@ -8,7 +8,10 @@ import type { Cart as CartType, Item as ItemType } from '../src/types/types';
 import { MemoryRouter } from 'react-router-dom';
 
 const data: ItemType[] = FakeData().data;
-const cart: CartType = Cart([{ item: FakeData().data[3], quantity: 1 }]);
+const cart: CartType = Cart(
+  [{ item: FakeData().data[3], quantity: 1 }],
+  () => {}
+);
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
