@@ -1,20 +1,34 @@
 import { useOutletContext, Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Item } from '../../types/types';
 import styles from './Shop.module.css';
 import homepage from '../../assets/icons/homepage.png';
 import cart from '../../assets/icons/cart.png';
 
+interface CustomEvent {
+  target: {
+    value: string;
+  };
+}
+
+type SortOption = 'category' | 'popularity' | 'low-to-high' | 'high-to-low';
+
 function Shop() {
-  let { data } = useOutletContext();
+  let { data }: { data: Item[] } = useOutletContext();
 
   const [search, setSearch] = useState('');
-  const [sort, setSort] = useState('category');
+  const [sort, setSort] = useState<SortOption>('category');
+  const isSortOption = (value: string): value is SortOption => {
+    const options = ['category', 'popularity', 'low-to-high', 'high-to-low'];
+    return options.includes(value);
+  };
   const regex = new RegExp(search, 'i');
   data = data.filter((item) => regex.test(item.description));
 
-  const updateSearch = (e) => setSearch(e.target.value);
-  const updateSort = (e) => setSort(e.target.value);
-  const sortData = (datas) => {
+  const updateSearch = (e: CustomEvent) => setSearch(e.target.value);
+  const updateSort = (e: CustomEvent) =>
+    isSortOption(e.target.value) && setSort(e.target.value);
+  (function sortData(datas: Item[]) {
     if (sort === 'popularity') {
       datas.sort((a, b) => b.rating - a.rating);
     } else if (sort === 'low-to-high') {
@@ -24,7 +38,7 @@ function Shop() {
     } else {
       datas.sort();
     }
-  };
+  })(data);
 
   return (
     <main className={styles.shop}>
@@ -58,7 +72,6 @@ function Shop() {
           ></input>
         </div>
       </div>
-      {sortData(data)}
       <section className={styles.section}>
         {data.map((item) => {
           return (
