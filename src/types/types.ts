@@ -21,7 +21,7 @@ interface Item {
 interface Review {
   rating: number;
   comment: string;
-  date: Date;
+  date: string;
   reviewerName: string;
 }
 
