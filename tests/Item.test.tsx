@@ -4,10 +4,11 @@ import userEvent from '@testing-library/user-event';
 import { FakeData } from './FakeData';
 import Item from '../src/components/item/Item';
 import { Cart } from '../src/Cart';
+import type { Cart as CartType, Item as ItemType } from '../src/types/types';
 import { MemoryRouter } from 'react-router-dom';
 
-const data = FakeData().data;
-const cart = Cart([{ item: FakeData().data[3], quantity: 1 }]);
+const data: ItemType[] = FakeData().data;
+const cart: CartType = Cart([{ item: FakeData().data[3], quantity: 1 }]);
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
@@ -23,7 +24,7 @@ vi.mock('react-router-dom', async () => {
 });
 
 describe('Item', () => {
-  const mockAddItem = vi.fn((item, quantity) => {
+  const mockAddItem = vi.fn((item: ItemType, quantity: number) => {
     return {
       item: item,
       quantity: quantity,
@@ -63,6 +64,6 @@ describe('Item', () => {
     await user.type(input, '2');
     const addButton = screen.getByRole('button', { name: 'Add to Cart' });
     await user.click(addButton);
-    expect(mockAddItem).toHaveBeenLastCalledWith(data[1], '2');
+    expect(mockAddItem).toHaveBeenLastCalledWith(data[1], 12);
   });
 });
