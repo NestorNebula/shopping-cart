@@ -8,8 +8,16 @@ import { Cart } from './Cart';
 
 function App() {
   const { data, error, loading } = useData();
-  const [items, setItems] = useState<{ item: Item; quantity: number }[]>([]);
-  const cart = Cart(items, setItems);
+  !localStorage.getItem('cart') &&
+    localStorage.setItem('cart', JSON.stringify([]));
+  const initCart = JSON.parse(localStorage.getItem('cart')!);
+  const [items, setItems] =
+    useState<{ item: Item; quantity: number }[]>(initCart);
+  const updateItems = (items: { item: Item; quantity: number }[]) => {
+    setItems(items);
+    localStorage.setItem('cart', JSON.stringify(items));
+  };
+  const cart = Cart(items, updateItems);
   return (
     !loading &&
     !error && (
