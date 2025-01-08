@@ -1,9 +1,10 @@
 import { useOutletContext, Navigate, Link } from 'react-router-dom';
 import { useState } from 'react';
+import type { Cart as CartType } from '../../types/types';
 import styles from './Cart.module.css';
 
 function Cart() {
-  const { cart } = useOutletContext();
+  const { cart }: { cart: CartType } = useOutletContext();
   const [submit, setSubmit] = useState(false);
 
   const handleFakeOrder = () => {
@@ -11,7 +12,7 @@ function Cart() {
     setSubmit(true);
   };
 
-  const handleRemove = (itemId) => cart.removeItem(itemId);
+  const handleRemove = (itemId: number) => cart.removeItem(itemId);
 
   return cart.items.length < 1 ? (
     <main className={styles.main}>
