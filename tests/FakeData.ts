@@ -1,4 +1,10 @@
-export const FakeData = () => {
+import type { Item } from '../src/types/types';
+
+export const FakeData: () => {
+  data: Item[];
+  error: null;
+  loading: false;
+} = () => {
   const data = [
     {
       id: 43,
