@@ -1,25 +1,32 @@
 import { useOutletContext, Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+import type { Cart, Item as ItemType } from '../../types/types';
 import star from '../../assets/icons/star.png';
 import noStar from '../../assets/icons/nostar.png';
 import styles from './Item.module.css';
 
 function Item() {
-  const { data, cart } = useOutletContext();
+  const { data, cart }: { data: ItemType[]; cart: Cart } = useOutletContext();
   const { item: id } = useParams();
-  const [quantity, setQuantity] = useState('');
+  const [quantity, setQuantity] = useState('1');
   const regex = new RegExp('([0-9]+)', 'i');
 
-  const updateQuantity = (e) => {
-    if (regex.test(e.target.value)) setQuantity(e.target.value);
+  const updateQuantity = (e: ChangeEvent) => {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+    if (regex.test(value) && Number(value) >= 1) setQuantity(value);
   };
-  const item = data.find((itm) => itm.id === +id);
+  const item = data.find((itm) => itm.id === +id!);
+  if (!item) {
+    throw Error("This item doesn't exist.");
+  }
   const reviews = item.reviews;
   const addToCart = () => {
-    cart.addItem(item, quantity || '1');
+    const q = Number(quantity);
+    q >= 1 && cart.addItem(item, q);
   };
 
-  const displayStars = (starsNumber) => {
+  const displayStars = (starsNumber: number) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
       if (starsNumber > 0) {
